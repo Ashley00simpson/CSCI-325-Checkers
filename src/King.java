@@ -3,6 +3,6 @@
  */
 public class King extends Checker {
     public King() {}
-    public char getPiece() { return mPiece; }
-    public void setPiece(char piece) { mPiece = piece; }
+    public char getPiece() {}
+    public void setPiece() {}
 }
