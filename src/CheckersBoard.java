@@ -76,19 +76,18 @@ public class CheckersBoard {
         mBoard[7][5].setPiece('x');
         mBoard[7][6].setPiece('.');
         mBoard[7][7].setPiece('x');
-
     }
+
     public void printBoard() {
         System.out.println("    1  2  3  4  5  6  7  8");
         for (int i = 0; i < 8; ++i) {
             System.out.print(" " + (i + 1) + " ");
             for (int j = 0; j < 8; ++j) {
-                System.out.print(" " +mBoard[i][j].getPiece() + " ");
+                System.out.print(" " + mBoard[i][j].getPiece() + " ");
             }
             System.out.println();
         }
     }
-
 
     public void movePiece(int xPiece, int yPiece, int xMove, int yMove) {
         // Move the current piece to the new position, and then remove it from the old position
