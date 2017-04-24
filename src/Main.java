@@ -43,13 +43,13 @@ public class Main {
             while (!isValid(user, xPiece, yPiece, xMove, yMove, board)) {
                 System.out.println("Invalid. Please Enter New Locations.");
                 System.out.println("Please Enter The X-Coordinate of the Piece You Would Like to Move: ");
-                xPiece = scanner.nextInt();
+                xPiece = scanner.nextInt() - 1;
                 System.out.println("Please Enter The Y-Coordinate of the Piece You Would Like to Move: ");
-                yPiece = scanner.nextInt();
+                yPiece = scanner.nextInt() - 1;
                 System.out.println("Please Enter The X-Coordinate of Where You Would Like to Move the Piece: ");
-                xMove = scanner.nextInt();
+                xMove = scanner.nextInt() - 1;
                 System.out.println("Please Enter The Y-Coordinate of Where You Would Like to Move the Piece: ");
-                yMove = scanner.nextInt();
+                yMove = scanner.nextInt() - 1;
             }
 
             // Move the piece to the desired location
@@ -241,7 +241,6 @@ public class Main {
                     }
                     else { return false; }
                 }
-
             }
             else { return false; }
         }
@@ -254,6 +253,4 @@ public class Main {
         }
         else { return true; }
     }
-
-
 }
