@@ -4,6 +4,6 @@
 public class Checker {
     public char mPiece;
     public Checker() {}
-    public char getPiece() {}
-    public void setPiece(char Piece) {}
+    public char getPiece() { return mPiece; }
+    public void setPiece(char piece) {mPiece = piece;}
 }
