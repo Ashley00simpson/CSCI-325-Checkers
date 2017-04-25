@@ -7,12 +7,15 @@ public class Main {
 
     public Main() {}
 
+    // Create the user variable and the piece variables to play the game
     public int user = 1; public int u1Pieces = 12; public int u2Pieces = 12;
 
     public static void main(String[] args) {
+        // Run the game
         Main m = new Main();
         m.gameLoop();
 
+        // Congratulate the players for being awesome, patient, and persistent
         System.out.println("Congratulations to the Winner and to Both Players on a Successful Game of Checkers!");
     }
 
@@ -55,6 +58,7 @@ public class Main {
             // Move the piece to the desired location
             board.movePiece(xPiece, yPiece, xMove, yMove);
 
+            // Create a King if the player has moved into a valid position
             if (user == 1) {
                 if (xMove == 0) {
                     board.mBoard[xMove][yMove] = new King();
@@ -89,6 +93,11 @@ public class Main {
     }
 
     public boolean isValid(int user, int xPiece, int yPiece, int xMove, int yMove, CheckersBoard board) {
+
+        /*
+        // If the input is invalid, return false
+        */
+
         if (xPiece < 0 || xPiece > 7 || yPiece < 0 || yPiece > 7 || xMove < 0 || xMove > 7 || yMove < 0 || yMove > 7) {
             return false;
         }
@@ -98,14 +107,19 @@ public class Main {
             return false;
         }
 
+        // This is a check for the first user, or the player playing with the 'x' pieces
         if (user == 1) {
+            // This is a check for if the piece trying to be moved is a normal checker
             if (board.mBoard[xPiece][yPiece].getPiece() == 'x') {
+                // If the move is one space and valid, and as lost as there is no piece there, return true
                 if (xMove - xPiece == -1 && Math.abs(yMove - yPiece) == 1) {
                     if (board.mBoard[xMove][yMove].getPiece() == '.') {
                         return true;
                     }
                     else { return false; }
                 }
+                // If the move is two spaces and valid, and the piece they are going over is an opponent checker,
+                // return true
                 else if (xMove - xPiece == -2 && Math.abs(yMove - yPiece) == 2) {
                     if (board.mBoard[xMove][yMove].getPiece() == '.') {
                         if (yMove - yPiece == -2) {
@@ -122,20 +136,26 @@ public class Main {
                             }
                             else { return false; }
                         }
+                        else { return false; }
                     }
                     else { return false; }
                 }
                 else { return false; }
             }
+            // This is a check for if the piece trying to be moved is a King checker
             if (board.mBoard[xPiece][yPiece].getPiece() == 'X') {
+                // If the move is one space and valid, and as long as there is no piece there, return true
                 if (Math.abs(xMove - xPiece) == 1 && Math.abs(yMove - yPiece) == 1) {
                     if (board.mBoard[xMove][yMove].getPiece() == '.') {
                         return true;
                     }
                     else { return false; }
                 }
+                // If the move is two spaces and valid, and as long as the location being jumped is an opponent piece,
+                // return true
                 else if (Math.abs(xMove - xPiece) == 2 && Math.abs(yMove - yPiece) == 2) {
                     if (board.mBoard[xMove][yMove].getPiece() == '.') {
+                        // These are checks for the four possible valid jumps for a King checker
                         if (xMove - xPiece == -2 && yMove - yPiece == -2) {
                             if (board.mBoard[xMove + 1][yMove + 1].getPiece() == 'o' ||
                                     board.mBoard[xMove + 1][yMove + 1].getPiece() == 'O') {
@@ -172,6 +192,8 @@ public class Main {
             }
             else { return false; }
         }
+        // This is the same set of checks for the second user, with minor differences related to direction and what
+        // pieces can be jumped, the same principles from above apply
         else if (user == 2){
             if (board.mBoard[xPiece][yPiece].getPiece() == 'o') {
                 if (xMove - xPiece == 1 && Math.abs(yMove - yPiece) == 1) {
@@ -248,6 +270,7 @@ public class Main {
     }
 
     public boolean gameContinue(int u1Pieces, int u2Pieces) {
+        // If either player's pieces have been depleted, end the game
         if (u1Pieces == 0 || u2Pieces == 0) {
             return false;
         }

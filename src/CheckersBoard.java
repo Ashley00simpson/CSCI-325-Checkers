@@ -4,14 +4,19 @@
 
 public class CheckersBoard {
     public CheckersBoard() {}
+
+    // This is the two dimensional array that will be the board
     public Checker[][] mBoard = new Checker[8][8];
 
     public void resetBoard() {
+        // Preset the board with fresh checkers
         for (int i = 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
                 mBoard[i][j] = new Checker();
             }
         }
+
+        // Set the board up in the correct format
         mBoard[0][0].setPiece('o');
         mBoard[0][1].setPiece('.');
         mBoard[0][2].setPiece('o');
@@ -79,6 +84,7 @@ public class CheckersBoard {
     }
 
     public void printBoard() {
+        // Print the board out in the correct format with the correct ruler metric
         System.out.println("    1  2  3  4  5  6  7  8");
         for (int i = 0; i < 8; ++i) {
             System.out.print(" " + (i + 1) + " ");
